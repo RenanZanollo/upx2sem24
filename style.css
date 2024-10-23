@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #000;
+}
+
+.logo {
+    width: 200px;
+    height: 180px;
+}
+
+
+.logo-text {
+    color: #7fff00; /* Cor do texto "ECOSAVE COIN" */
+    font-size: 24px;
+    margin-left: 10px;
+    display: block;
+}
+
+.content {
+    height: 80vh;
+    background: linear-gradient(170deg, black 50%, white 50%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 100px;
+}
+
+.form {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    padding: 20px;
+    background: rgba(201, 201, 201, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown, .simulate-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown {
+    width: 30%;
+}
+
+.simulate-btn {
+    width: 20%;
+}
+
+.simulate-btn:hover {
+    background-color: #333;
+}
+
+.texto{
+    width: 800px;
+    height: 300px;
+    border-radius: 15px;
+    background: rgb(131, 131, 131);
+    color: #fff;
+    box-shadow:#444;
+    margin-left: 355px;
+}
+
+.carousel {
+    position: relative;
+    padding-left: 400px;
+    padding-right: 400px;
+    background: black;
+}
+.carousel-inner{
+    background-color: #000;
+    align-items: center;
+}
+
+#carouselExampleIndicators .carousel-inner .carousel-item{
+    height: 400px;
+    background-color: #000;
+    align-items: center;
+}
+
+#carouselExampleIndicators .carousel-inner .carousel-item img{
+    height: 400px;
+    width: 200px;
+    background-color: #000;
+    align-items: center;
+}
