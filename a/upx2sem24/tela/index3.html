@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Consumo de Energia</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+
+    <h1>Simulador de Consumo de Energia</h1>
+
+    <!-- Div representando o quintal com botões interativos -->
+    <div class="quintal">
+        <button class="eletrodomestico churrasqueira" onclick="showInfo('churrasqueira')">
+            <img src="https://via.placeholder.com/60" alt="Churrasqueira Elétrica">
+        </button>
+
+        <button class="eletrodomestico piscina" onclick="showInfo('piscina')">
+            <img src="https://via.placeholder.com/60" alt="Piscina Aquecida">
+        </button>
+    </div>
+
+    <!-- Div para exibir informações sobre os eletrodomésticos -->
+    <div id="info"></div>
+
+    <script>
+        // Função para exibir informações dos eletrodomésticos
+        function showInfo(eletro) {
+            var infoBox = document.getElementById('info');
+            if (eletro === 'churrasqueira') {
+                infoBox.innerHTML = "<strong>Churrasqueira Elétrica</strong><br>Consumo: 3 horas/dia<br>Potência: 1500W";
+            } else if (eletro === 'piscina') {
+                infoBox.innerHTML = "<strong>Piscina Aquecida</strong><br>Consumo: 6 horas/dia<br>Potência: 2000W";
+            }
+
+            // Exibe a caixa de informações
+            infoBox.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
