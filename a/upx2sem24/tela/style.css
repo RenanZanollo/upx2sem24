@@ -14,9 +14,10 @@ body {
 
 /* Header */
 header {
-    position: relative;
+    /*position: relative;
+    justify-content: left;*/
     align-items: center;
-    justify-content: left;
+    display: flex;
     padding: 20px;
     background-color: #000;
 }
@@ -29,6 +30,19 @@ header {
 .logo {
     width: 150px;
     height: auto;
+}
+
+.button-header{
+    padding-left: 65%;
+}
+
+.maria{
+    width: 140px;
+    height: 85px;
+    border-radius: 0px 0px 15px 15px;
+    color: #00ff08;
+    font-weight: bold;
+    background-color: #6e6e6e;
 }
 
 /* Estilo do carousel */
