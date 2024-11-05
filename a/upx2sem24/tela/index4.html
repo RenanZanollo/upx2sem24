@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Ecosave Coin</title>
+    <style>
+        /* Estilo da página */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(165deg, #000000 50%, #dcdcdc 50%);
+            display: flex;
+            justify-content: center;
+            /* Centraliza o conteúdo horizontalmente */
+            align-items: center;
+            /* Centraliza o conteúdo verticalmente */
+            height: 100vh;
+            color: #ffffff;
+            position: relative;
+            /* Permite o posicionamento absoluto dos filhos */
+        }
+
+        header {
+            position: absolute;
+            /* Isso permite que o botão seja posicionado em relação ao body */
+            top: 10px;
+            /* Distância de 10px do topo */
+            left: 10px;
+            /* Distância de 10px da esquerda */
+            z-index: 10;
+            /* Garante que o botão fique acima do conteúdo */
+        }
+
+        .logobutton {
+            border: none;
+            background-color: transparent;
+        }
+
+        .register-box {
+            width: 400px;
+            padding: 40px;
+            background-color: #333333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .register-box h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #88ff88;
+        }
+
+        .register-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #222222;
+            border: 1px solid #555555;
+            color: #ffffff;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .register-box button {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .register-box button:hover {
+            background-color: #88ff88;
+        }
+
+        /* Estilo para as partículas */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: #88ff88;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particle-animation 0.8s linear;
+        }
+
+        @keyframes particle-animation {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.5) translateY(-20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo1">
+            <button class="logobutton">
+                <img src="imagens/Captura de tela 2024-10-21 194334.png" alt="Logo Ecosave Coin" class="logo">
+            </button>
+        </div>
+    </header>
+    <section>
+        <div class="register-box">
+            <h2>Cadastro</h2>
+            <input type="text" placeholder="Usuário">
+            <input type="password" placeholder="Senha">
+            <input type="text" placeholder="Nome">
+            <input type="text" placeholder="Sobrenome">
+            <input type="number" placeholder="Idade">
+            <input type="text" placeholder="CEP">
+            <button onclick="createParticles(event)">Cadastrar</button>
+        </div>
+    </section>
+
+    <script>
+        function createParticles(event) {
+            const button = event.currentTarget;
+            const particles = 20; // Número de partículas
+            const buttonRect = button.getBoundingClientRect();
+
+            for (let i = 0; i < particles; i++) {
+                const particle = document.createElement("span");
+                particle.classList.add("particle");
+
+                // Posiciona a partícula
+                particle.style.left = `${event.clientX - buttonRect.left}px`;
+                particle.style.top = `${event.clientY - buttonRect.top}px`;
+
+                // Animação aleatória
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = Math.random() * 40;
+                particle.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
+
+                // Adiciona a partícula ao botão
+                button.appendChild(particle);
+
+                // Remove a partícula após a animação
+                particle.addEventListener("animationend", () => {
+                    particle.remove();
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

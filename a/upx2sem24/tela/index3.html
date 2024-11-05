@@ -3,41 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Consumo de Energia</title>
-    <link rel="stylesheet" href="style3.css">
+    <title>Login - Ecosave Coin</title>
+    <style>
+        /* Estilo da página */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(165deg, #000000 50%, #dcdcdc 50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #ffffff;
+        }
+
+        .login-box {
+            width: 400px;
+            padding: 40px;
+            background-color: #333333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .login-box h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #88ff88;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #222222;
+            border: 1px solid #555555;
+            color: #ffffff;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .login-box button {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-box button:hover {
+            background-color: #88ff88;
+        }
+
+        /* Estilo para as partículas */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: #88ff88;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particle-animation 0.8s linear;
+        }
+
+        @keyframes particle-animation {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.5) translateY(-20px);
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <h1>Simulador de Consumo de Energia</h1>
-
-    <!-- Div representando o quintal com botões interativos -->
-    <div class="quintal">
-        <button class="eletrodomestico churrasqueira" onclick="showInfo('churrasqueira')">
-            <img src="https://via.placeholder.com/60" alt="Churrasqueira Elétrica">
-        </button>
-
-        <button class="eletrodomestico piscina" onclick="showInfo('piscina')">
-            <img src="https://via.placeholder.com/60" alt="Piscina Aquecida">
-        </button>
+    <div class="login-box">
+        <h2>Login</h2>
+        <input type="text" placeholder="Usuário">
+        <input type="password" placeholder="Senha">
+        <div>
+            <button onclick="createParticles(event)">Entrar</button>
+            <button onclick="createParticles(event)">Cadastro</button>
+        </div>
     </div>
 
-    <!-- Div para exibir informações sobre os eletrodomésticos -->
-    <div id="info"></div>
-
     <script>
-        // Função para exibir informações dos eletrodomésticos
-        function showInfo(eletro) {
-            var infoBox = document.getElementById('info');
-            if (eletro === 'churrasqueira') {
-                infoBox.innerHTML = "<strong>Churrasqueira Elétrica</strong><br>Consumo: 3 horas/dia<br>Potência: 1500W";
-            } else if (eletro === 'piscina') {
-                infoBox.innerHTML = "<strong>Piscina Aquecida</strong><br>Consumo: 6 horas/dia<br>Potência: 2000W";
-            }
+        function createParticles(event) {
+            const button = event.currentTarget;
+            const particles = 20; // Número de partículas
+            const buttonRect = button.getBoundingClientRect();
 
-            // Exibe a caixa de informações
-            infoBox.style.display = 'block';
+            for (let i = 0; i < particles; i++) {
+                const particle = document.createElement("span");
+                particle.classList.add("particle");
+
+                // Posiciona a partícula
+                particle.style.left = `${event.clientX - buttonRect.left}px`;
+                particle.style.top = `${event.clientY - buttonRect.top}px`;
+
+                // Animação aleatória
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = Math.random() * 40;
+                particle.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
+
+                // Adiciona a partícula ao botão
+                button.appendChild(particle);
+
+                // Remove a partícula após a animação
+                particle.addEventListener("animationend", () => {
+                    particle.remove();
+                });
+            }
         }
     </script>
-
 </body>
 </html>
