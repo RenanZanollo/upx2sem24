@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecosave Coin - Economia Sustentável</title>
+    <style>
+        /* Estilo da página */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(165deg, #000000 50%, #dcdcdc 50%);
+            color: #777777;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+        }
+
+        .logobutton {
+            border: none;
+            background-color: transparent;
+        }
+
+        /* Centraliza o conteúdo principal */
+        .container {
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .buttons button {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 15px 25px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+        }
+
+        .buttons button:hover {
+            background-color: #555555;
+        }
+
+        /* Efeito quando o botão é clicado */
+        .buttons button.active {
+            background-color: #9c9c9c;
+            color: black;
+        }
+
+        /* Efeito das partículas de folhinhas */
+        .leaf {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #88ff88;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: leaf-animation 1s ease-out forwards;
+        }
+
+        @keyframes leaf-animation {
+            0% {
+                opacity: 1;
+                transform: scale(1) translateY(0) rotate(0);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5) translateY(-50px) rotate(180deg);
+            }
+        }
+
+        .content {
+            margin-top: 50px;
+        }
+
+        .content h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: #00be19;
+        }
+
+        .content p {
+            font-size: 20px;
+            color: #696969;
+        }
+
+        .cta-button {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 15px 25px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 18px;
+            margin-top: 30px;
+            transition: background-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            background-color: #555555;
+        }
+
+        /* Efeito do botão principal */
+        .cta-button.active {
+            background-color: #9c9c9c;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo1">
+            <button class="logobutton">
+                <a href="http://127.0.0.1:5500/upx2sem24/a/upx2sem24/tela/index2.html"><img src="imagens/Captura de tela 2024-10-21 194334.png" alt="Logo Ecosave Coin" class="logo"></a>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="header">
+            <div class="buttons">
+                <a href="http://127.0.0.1:5500/upx2sem24/a/upx2sem24/tela/index4.html"><button onclick="handleButtonClick(event)">Cadastre-se</button></a>
+                <a href="http://127.0.0.1:5500/upx2sem24/a/upx2sem24/tela/index3.html"><button onclick="handleButtonClick(event)">Login</button></a>
+            </div>
+        </div>
+
+        <div class="content">
+            <h1>Economia Sustentável</h1>
+            <p>Explore o nosso website para aumentar sua economia de energia e gerenciar os seus gastos mensais. Experimente gratuitamente.</p>
+            <a href="http://127.0.0.1:5500/upx2sem24/a/upx2sem24/tela/index.html"><button class="cta-button" onclick="handleButtonClick(event)">Economize já</button></a>
+        </div>
+    </div>
+
+    <script>
+        // Função para lidar com o clique no botão
+        function handleButtonClick(event) {
+            const button = event.currentTarget;
+            const particles = 30; // Número de partículas (folhinhas)
+            const buttonRect = button.getBoundingClientRect();
+
+            // Ativar o efeito do botão
+            button.classList.add('active');
+
+            // Gerar partículas de folhinhas
+            for (let i = 0; i < particles; i++) {
+                const leaf = document.createElement("span");
+                leaf.classList.add("leaf");
+
+                // Posicionar a folhinha em uma posição aleatória dentro do botão
+                const offsetX = Math.random() * buttonRect.width;
+                const offsetY = Math.random() * buttonRect.height;
+                leaf.style.left = `${offsetX}px`;
+                leaf.style.top = `${offsetY}px`;
+
+                // Adicionar a folhinha ao botão
+                button.appendChild(leaf);
+
+                // Remover a folhinha após a animação
+                leaf.addEventListener("animationend", () => {
+                    leaf.remove();
+                });
+            }
+
+            // Após um tempo, remova a classe de ativação para restaurar o botão
+            setTimeout(() => {
+                button.classList.remove('active');
+            }, 500); // 500ms para restaurar o botão
+        }
+    </script>
+
+</body>
+</html>

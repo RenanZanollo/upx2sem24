@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Ecosave Coin</title>
+    <style>
+        /* Estilo da página */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(165deg, #000000 50%, #dcdcdc 50%);
+            display: flex;
+            justify-content: center;
+            /* Centraliza o conteúdo horizontalmente */
+            align-items: center;
+            /* Centraliza o conteúdo verticalmente */
+            height: 100vh;
+            color: #ffffff;
+            position: relative;
+            /* Permite o posicionamento absoluto dos filhos */
+        }
+
+        header {
+            position: absolute;
+            /* Isso permite que o botão seja posicionado em relação ao body */
+            top: 10px;
+            /* Distância de 10px do topo */
+            left: 10px;
+            /* Distância de 10px da esquerda */
+            z-index: 10;
+            /* Garante que o botão fique acima do conteúdo */
+        }
+
+        .logobutton {
+            border: none;
+            background-color: transparent;
+        }
+
+        .register-box {
+            width: 400px;
+            padding: 40px;
+            background-color: #333333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .register-box h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #88ff88;
+        }
+
+        .register-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #222222;
+            border: 1px solid #555555;
+            color: #ffffff;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .register-box button {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .register-box button:hover {
+            background-color: #9c9c9c;
+        }
+
+        /* Estilo para as partículas de folhinhas */
+        .leaf {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #88ff88;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: leaf-animation 1s ease-out forwards;
+        }
+
+        @keyframes leaf-animation {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(0.5);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo1">
+            <button class="logobutton">
+                <a href="http://127.0.0.1:5500/upx2sem24/a/upx2sem24/tela/index2.html"><img src="imagens/Captura de tela 2024-10-21 194334.png" alt="Logo Ecosave Coin" class="logo"></a>
+            </button>
+        </div>
+    </header>
+    <section>
+        <div class="register-box">
+            <h2>Cadastro</h2>
+            <input type="text" placeholder="Usuário">
+            <input type="password" placeholder="Senha">
+            <input type="text" placeholder="Nome">
+            <input type="text" placeholder="Sobrenome">
+            <input type="number" placeholder="Idade">
+            <input type="text" placeholder="CEP">
+            <a href="http://127.0.0.1:5500/upx2sem24/a/upx2sem24/tela/index3.html"><button onclick="handleButtonClick(event)">Cadastrar</button></a>
+        </div>
+    </section>
+
+    <script>
+        // Função para lidar com o clique no botão e criar partículas de folhinhas
+        function handleButtonClick(event) {
+            const button = event.currentTarget;
+            const particles = 30; // Número de partículas (folhinhas)
+            const buttonRect = button.getBoundingClientRect();
+
+            // Ativar o efeito do botão
+            button.classList.add('active');
+
+            // Gerar partículas de folhinhas
+            for (let i = 0; i < particles; i++) {
+                const leaf = document.createElement("span");
+                leaf.classList.add("leaf");
+
+                // Posicionar a folhinha em uma posição aleatória dentro do botão
+                const offsetX = Math.random() * buttonRect.width;
+                const offsetY = Math.random() * buttonRect.height;
+                leaf.style.left = `${offsetX}px`;
+                leaf.style.top = `${offsetY}px`;
+
+                // Adicionar a folhinha ao botão
+                button.appendChild(leaf);
+
+                // Remover a folhinha após a animação
+                leaf.addEventListener("animationend", () => {
+                    leaf.remove();
+                });
+            }
+
+            // Após um tempo, remova a classe de ativação para restaurar o botão
+            setTimeout(() => {
+                button.classList.remove('active');
+            }, 500); // 500ms para restaurar o botão
+        }
+    </script>
+</body>
+
+</html>
